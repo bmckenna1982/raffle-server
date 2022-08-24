@@ -19,6 +19,17 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
+app.get('/api/tickets', (req, res) => {
+  TicketService.getTickets(req.app.get('db'))
+    .then(tickets => {
+      if (!tickets) {
+        return res.status(404).send('Latest comment not found')
+      }
+      console.log('tickets', tickets)
+      res.json(tickets)
+    })
+})
+
 app.use(function errorHandler(error, req, res, next) {
   let response
   if (process.env.NODE_ENV === 'production') {
