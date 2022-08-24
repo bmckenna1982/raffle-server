@@ -1,10 +1,10 @@
-const knex = require('knex')({
+const knex = require('knex')
+const knexInstance = knex({
     client: 'pg',
-    connection:
-      'postgresql://postgres@localhost:5432/raffletickets',
+    connection: 'postgresql://postgres@localhost:5432/raffletickets',
       // + '?ssl=true',
     debug: false
-  });
+  })
   
   // let games = [];
   
@@ -28,7 +28,7 @@ const knex = require('knex')({
     )
   }
   
-  console.log('tickets', tickets);
+  console.log('tickets', tickets)
 
   const inserts = function () {
     const insertPromises = [];
@@ -38,7 +38,7 @@ const knex = require('knex')({
       );
     });
     return Promise.all(insertPromises);
-  };
+  }
   
   clearTickets()
     .then(() => {

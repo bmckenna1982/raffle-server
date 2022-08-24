@@ -1,0 +1,50 @@
+BEGIN;
+
+TRUNCATE tickets;
+
+INSERT INTO tickets (ticketId, lastName, firstName)
+    VALUES
+        ('50-001','Eli','Barry'),
+        ('50-002','Eli','Barry'),
+        ('50-003','Eli','Barry'),
+        ('50-004','David','Williams'),
+        ('50-005','David','Williams'),
+        ('50-006','David','Williams'),
+        ('50-007','Bill','Brennan'),
+        ('50-008','Bill','Brennan'),
+        ('50-009','Mark','Chirico'),
+        ('50-010','Mark','Chirico'),        
+        ('50-011','Darcy','Hayes'),        
+        ('50-012','Darcy','Hayes'),        
+        ('50-013','Darcy','Hayes'),
+        ('50-014','Darcy','Hayes'),
+        ('50-015','Darcy','Hayes'),
+        ('50-016','Andrew','Hines'),
+        ('50-017','Andrew','Hines'),
+        ('50-018','Andrew','Hines'),
+        ('50-022','Bud','Lound'),
+        ('50-023','Bud','Lound'),
+        ('50-024','Bud','Lound'),
+        ('50-025','Bud','Lound'),
+        ('50-026','Kristen','Beinhower'),
+        ('50-027','Kristen','Beinhower'),
+        ('50-028','Alex','Goldfarb'),
+        ('50-029','Alex','Goldfarb'),
+        ('50-030','Kevin','McKenna'),
+        ('50-031','Alex','Goldfarb'),
+        ('50-032','Alex','Goldfarb'),
+        ('50-033','Mitch','Gianoni'),
+        ('50-034','Mitch','Gianoni'),
+        ('50-035','Lisa','Ochs'),
+        ('50-036','Lisa','Ochs'),
+        ('50-037','Shane','Sullivan'),
+        ('50-038','Shane','Sullivan'),
+        ('50-039','Ryan','Alexander'),
+        ('50-041','Shane','Coughlan'),
+        ('50-042','Deana','Brennan'),
+        ('50-055','Kevin','McKenna'),
+        ('50-060','Kevin','McKenna'),
+        ('50-070','Kevin','McKenna'),
+        ('50-074','Bill','Brennan');
+
+COMMIT;
