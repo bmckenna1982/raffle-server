@@ -8,39 +8,38 @@ const knex = require('knex')({
   
   // let games = [];
   
-  const schedule = require('./src/schedule-data')
+  const tickets = require('./src/ticket-data');
   
-  const clearSchedule = () => {
+  const clearTickets = () => {
     return knex.transaction(trx =>
       trx.raw(
         `TRUNCATE 
-          rsvp,
-          schedule
+          tickets
         `
       )
-        .then(() =>
-          Promise.all([
-            trx.raw(`ALTER SEQUENCE rsvp_id_seq minvalue 0 START WITH 1`),
-            trx.raw(`ALTER SEQUENCE schedule_id_seq minvalue 0 START WITH 1`),
-            trx.raw(`SELECT setval('rsvp_id_seq', 0)`),
-            trx.raw(`SELECT setval('schedule_id_seq', 0)`)
-          ])
-        )
+        // .then(() =>
+        //   Promise.all([
+        //     trx.raw(`ALTER SEQUENCE rsvp_id_seq minvalue 0 START WITH 1`),
+        //     trx.raw(`ALTER SEQUENCE schedule_id_seq minvalue 0 START WITH 1`),
+        //     trx.raw(`SELECT setval('rsvp_id_seq', 0)`),
+        //     trx.raw(`SELECT setval('schedule_id_seq', 0)`)
+        //   ])
+        // )
     )
   }
   
-  console.log('schedule', schedule)
+  console.log('tickets', tickets);
   const inserts = function () {
     const insertPromises = [];
-    schedule.forEach(function (game) {
-      insertPromises.push(knex('schedule')
-        .insert({ summary: game.summary, location: game.location, time: new Date(game.time) })
+    tickets.forEach(function (ticket) {
+      insertPromises.push(knex('tickets')
+        .insert({ ticketId: ticket.summary, lastName: ticket.lastName, firstName:ticket.firstName })
       );
     });
     return Promise.all(insertPromises);
   };
   
-  clearSchedule()
+  clearTickets()
     .then(() => {
       console.log('Table cleared')
     })
