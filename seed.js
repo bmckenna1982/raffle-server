@@ -1,8 +1,8 @@
 const knex = require('knex')({
     client: 'pg',
     connection:
-      'postgres://mrixwjaeiiehqk:71f2a439f7e8dd38a5bfa63fd7a13e3f1ef0782e0aac2b9dd6627d02ec38281a@ec2-34-206-252-187.compute-1.amazonaws.com:5432/d906h1marlgr9b'
-      + '?ssl=true',
+      'postgresql://postgres@localhost:5432/raffletickets',
+      // + '?ssl=true',
     debug: false
   });
   
@@ -29,11 +29,12 @@ const knex = require('knex')({
   }
   
   console.log('tickets', tickets);
+
   const inserts = function () {
     const insertPromises = [];
     tickets.forEach(function (ticket) {
       insertPromises.push(knex('tickets')
-        .insert({ ticketId: ticket.summary, lastName: ticket.lastName, firstName:ticket.firstName })
+        .insert({ ticketId: ticket.ticketNum, lastName: ticket.lastName, firstName:ticket.firstName })
       );
     });
     return Promise.all(insertPromises);

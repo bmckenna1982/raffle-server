@@ -23,10 +23,10 @@ app.get('/api/tickets', (req, res) => {
   TicketService.getTickets(req.app.get('db'))
     .then(tickets => {
       if (!tickets) {
-        return res.status(404).send('Latest comment not found')
+        return res.status(404).send('Latest comment not found');
       }
-      console.log('tickets', tickets)
-      res.json(tickets)
+      console.log('tickets', tickets);
+      res.json(tickets);
     })
 })
 
