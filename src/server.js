@@ -4,7 +4,7 @@ const { PORT } = require('./config');
 
 const db = knex({
   client: 'pg',
-  connection: 'https://'
+  connection: 'postgresql://postgres@localhost:5432/raffletickets'
 });
 
 app.set('db', db);
