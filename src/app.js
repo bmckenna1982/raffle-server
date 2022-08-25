@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
-app.get('/api/tickets', (req, res) => {
+app.get('/api/tickets', (req, res, next) => {
   TicketService.getTickets(req.app.get('db'))
     .then(tickets => {
       if (!tickets) {
@@ -32,9 +32,10 @@ app.get('/api/tickets', (req, res) => {
       console.log('tickets', tickets);
       res.json(tickets);
     })
+    .catch(next)
 })
 
-app.post('/api/tickets', bodyParser, (req, res) => {
+app.post('/api/tickets', bodyParser, (req, res, next) => {
   console.log('add ticket', req)
   TicketService.addTicket(req.app.get('db'), req.body)
     .then(ticket => {
@@ -44,6 +45,7 @@ app.post('/api/tickets', bodyParser, (req, res) => {
       console.log('ticket', ticket);
       res.json(ticket);
     })
+    .catch(next)
 })
 
 app.use(function errorHandler(error, req, res, next) {
