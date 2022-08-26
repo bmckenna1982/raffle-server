@@ -5,7 +5,7 @@ module.exports = {
     process.env.API_BASE_URL || "http://localhost:3000/api",
   DATABASE_URL:
     process.env.DATABASE_URL ||
-    "postgresql://dunder_mifflin:office@localhost/raffletickets",
+    "postgresql://postgres@localhost:5432/raffletickets",
   TEST_DATABASE_URL:
     process.env.TEST_DATABASE_URL ||
     "postgresql://dunder_mifflin:office@localhost/raffletickets_test",
