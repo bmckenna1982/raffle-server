@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/tickets', (req, res, next) => {
-  console.log(req)
+  console.log(req.app)
   TicketService.getTickets(req.app.get('db'))
     .then(tickets => {
       if (!tickets) {
