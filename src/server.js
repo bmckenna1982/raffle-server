@@ -4,12 +4,12 @@ const { PORT, DATABASE_URL } = require('./config');
 
 const db = knex({
   client: 'pg',
-  // connection: 'postgresql://postgres@localhost:5432/raffletickets'
+ 
   connection: {
     connectionString: DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
+    // ssl: {
+    //   rejectUnauthorized: false
+    // }
   }
 });
 
